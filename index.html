@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warsi Dental Clinic | Advanced Dental Care in Shah Faisal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#0f172a',
+                            900: '#0b0f19',
+                            950: '#05070e'
+                        },
+                        teal: {
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488'
+                        },
+                        cyan: {
+                            500: '#06b6d4',
+                            600: '#0891b2'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Glassmorphism Effects */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(20, 184, 166, 0.3);
+        }
+        
+        /* Thermal Receipt Specific Styles for Print */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #thermal-receipt-modal, #thermal-receipt-modal * {
+                visibility: visible;
+            }
+            #thermal-receipt-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 80mm !important;
+                margin: 0;
+                padding: 5mm;
+                background: #fff !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                border: none !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-teal-500 selection:text-slate-950 min-h-screen flex flex-col justify-between">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-700 text-white text-xs md:text-sm font-medium py-2 px-4 text-center flex justify-between items-center z-50 relative">
+        <div class="container mx-auto flex justify-between items-center px-2">
+            <span class="flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+                <span>Complete Dental Checkup Fee: <strong>PKR 500 Only</strong></span>
+            </span>
+            <div class="hidden md:flex items-center gap-6">
+                <span class="flex items-center gap-1.5">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-teal-200"></i> Shah Faisal Town, Karachi
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-3.5 h-3.5 text-teal-200"></i> Mon - Sat: 5:00 PM - 10:00 PM
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-teal-500 to-cyan-400 flex items-center justify-center text-slate-950 shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="tooth" class="w-6 h-6 stroke-[2.2]"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-white block leading-tight">WARSI <span class="text-teal-400">DENTAL</span></span>
+                        <span class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold block">Clinic & Laser Center</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#home" class="text-slate-300 hover:text-teal-400 transition-colors">Home</a>
+                    <a href="#about" class="text-slate-300 hover:text-teal-400 transition-colors">About Us</a>
+                    <a href="#services" class="text-slate-300 hover:text-teal-400 transition-colors">Services</a>
+                    <a href="#doctor" class="text-slate-300 hover:text-teal-400 transition-colors">Specialist</a>
+                    <a href="#location" class="text-slate-300 hover:text-teal-400 transition-colors">Location</a>
+                    <a href="#faqs" class="text-slate-300 hover:text-teal-400 transition-colors">FAQs</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="tel:03463298428" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/20 text-sm font-semibold transition-all">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        03463298428
+                    </a>
+                    <a href="#booking" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 font-bold hover:from-teal-400 hover:to-cyan-400 shadow-lg shadow-teal-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-sm">
+                        Book Appointment
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <a href="tel:03463298428" class="p-2 rounded-lg bg-slate-800 text-teal-400 border border-teal-500/20">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </a>
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-teal-400">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-teal-400">About Us</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-teal-400">Services</a>
+            <a href="#doctor" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-teal-400">Specialist</a>
+            <a href="#booking" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-teal-400">Book Appointment</a>
+            <a href="#receipt-section" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-teal-400">Instant Slip / Receipt</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-teal-400">Location</a>
+            <div class="pt-2">
+                <a href="#booking" onclick="toggleMobileMenu()" class="w-full block text-center py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 font-bold">
+                    Book Appointment Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+        <!-- Ambient Background Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs sm:text-sm font-semibold">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-teal-400"></i>
+                        Premier Dental Care in Shah Faisal Town
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Painless Dentistry With Modern <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Digital Technology</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Experience gentle, hygienic, and highly affordable dental treatments led by <strong>Dr. Amir Warsi</strong> with over 20+ years of clinical surgical excellence.
+                    </p>
+
+                    <!-- Key Highlights Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 max-w-xl mx-auto lg:mx-0">
+                        <div class="glass-card p-3 rounded-xl text-left border-l-4 border-l-teal-400">
+                            <span class="block text-slate-400 text-xs">Consultation Fee</span>
+                            <span class="text-lg font-bold text-white">PKR 500</span>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl text-left border-l-4 border-l-cyan-400">
+                            <span class="block text-slate-400 text-xs">Senior Specialist</span>
+                            <span class="text-lg font-bold text-white">20+ Yrs Exp</span>
+                        </div>
+                        <div class="col-span-2 sm:col-span-1 glass-card p-3 rounded-xl text-left border-l-4 border-l-emerald-400">
+                            <span class="block text-slate-400 text-xs">Tech Equipped</span>
+                            <span class="text-lg font-bold text-white">Digital X-Ray</span>
+                        </div>
+                    </div>
+
+                    <!-- Hero Call to Actions -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#booking" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 font-bold hover:from-teal-400 hover:to-cyan-400 shadow-xl shadow-teal-500/25 transition-all text-center flex items-center justify-center gap-2 text-base">
+                            <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                            Book Consultation (Rs. 500)
+                        </a>
+                        <a href="https://wa.me/923463298428?text=Hello%20Warsi%20Dental%20Clinic,%20I%20want%20to%20inquire%20about%20dental%20treatment." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-emerald-400 font-semibold hover:bg-emerald-500/10 border border-emerald-500/30 transition-all text-center flex items-center justify-center gap-2 text-base">
+                            <i data-lucide="message-square" class="w-5 h-5"></i>
+                            WhatsApp Chat
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero Clinic Showcase Images Gallery -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        
+                        <!-- Main Facility Image Container -->
+                        <div class="relative rounded-2xl overflow-hidden glass-card p-2 border border-slate-700 shadow-2xl">
+                            <img src="image_14a99e.jpg" alt="Warsi Dental Clinic Modern Chair" class="w-full h-80 sm:h-96 object-cover rounded-xl hover:scale-105 transition-transform duration-500">
+                            <div class="absolute bottom-4 left-4 right-4 glass-card p-3 rounded-xl border border-white/10 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span class="text-xs font-semibold text-slate-200">State-of-the-art Dental Unit</span>
+                                </div>
+                                <span class="text-[10px] text-teal-300 font-mono">HYGIENIC & STERILIZED</span>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Digital X-Ray Image Overlap -->
+                        <div class="absolute -bottom-8 -left-6 sm:-left-8 w-48 sm:w-56 glass-card p-2 rounded-2xl border border-teal-500/30 shadow-2xl hidden sm:block">
+                            <img src="image_14a9da.jpg" alt="Digital Dental X-Ray Diagnostics" class="w-full h-32 object-cover rounded-lg">
+                            <div class="p-2">
+                                <p class="text-xs font-bold text-teal-300">Digital Dental X-Ray</p>
+                                <p class="text-[10px] text-slate-400">Painless & Instant Diagnosis</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Specialist Profile Section -->
+    <section id="doctor" class="py-16 bg-slate-900/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Meet Our Specialist</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Lead Dental Surgeon</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">Providing compassionate, highly experienced dental surgical care to Shah Faisal residents for over two decades.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto glass-card rounded-2xl p-6 sm:p-8 border border-slate-800 relative overflow-hidden glow-effect">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="md:col-span-5 flex justify-center">
+                        <div class="relative">
+                            <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-gradient-to-tr from-teal-500 via-cyan-500 to-blue-600 p-1">
+                                <div class="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden">
+                                    <i data-lucide="user-check" class="w-24 h-24 text-teal-400"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-emerald-500 text-slate-950 font-bold text-xs px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> 20+ Yrs Exp
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-7 space-y-4 text-center md:text-left">
+                        <div>
+                            <span class="inline-block px-3 py-1 rounded-md bg-teal-500/10 text-teal-400 text-xs font-semibold mb-2">Senior Dental Surgeon</span>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white">Dr. Amir Warsi</h3>
+                            <p class="text-slate-400 text-sm">BDS, Specialist in Oral Surgery & Cosmetic Dentistry</p>
+                        </div>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Dr. Amir Warsi is a renowned dental surgeon specializing in pain-free root canals, dental implants, complex extractions, and smile design. With modern digital equipment and a gentle approach, he ensures every patient receives top-tier treatment comfortably.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2 text-xs">
+                            <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700/50">
+                                <span class="text-teal-400 font-bold block">Specialization</span>
+                                <span class="text-slate-300">Root Canals & Implants</span>
+                            </div>
+                            <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700/50">
+                                <span class="text-teal-400 font-bold block">Consultation Fee</span>
+                                <span class="text-slate-300">PKR 500 Only</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="#booking" class="inline-flex items-center gap-2 text-sm font-bold text-teal-400 hover:text-teal-300 transition-colors">
+                                Book Consultation with Dr. Amir Warsi <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Procedures Section -->
+    <section id="services" class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Comprehensive Dental Solutions</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Our Treatments & Services</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">All treatments are performed using state-of-the-art sterilization and modern digital technology.</p>
+            </div>
+
+            <!-- Service Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="service-filters">
+                <button onclick="filterServices('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-teal-500 text-slate-950 transition-all">All Treatments</button>
+                <button onclick="filterServices('restorative')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:text-white transition-all">Restorative & RCT</button>
+                <button onclick="filterServices('cosmetic')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:text-white transition-all">Cosmetic & Whitening</button>
+                <button onclick="filterServices('surgery')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:text-white transition-all">Surgical & Implants</button>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+                
+                <!-- Service 1 -->
+                <div class="service-card glass-card p-6 rounded-2xl border border-slate-800 hover:border-teal-500/40 transition-all duration-300" data-category="restorative">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center mb-4">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Painless Root Canal (RCT)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Single or multi-sitting painless RCT treatment utilizing modern rotary endodontic equipment to save infected teeth.</p>
+                    <div class="flex justify-between items-center text-xs pt-3 border-t border-slate-800">
+                        <span class="text-teal-400 font-semibold">Checkup Fee: Rs. 500</span>
+                        <a href="#booking" onclick="selectServiceInForm('Painless Root Canal (RCT)')" class="text-slate-300 hover:text-teal-300 font-bold flex items-center gap-1">Book Now <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card glass-card p-6 rounded-2xl border border-slate-800 hover:border-teal-500/40 transition-all duration-300" data-category="surgery">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mb-4">
+                        <i data-lucide="shield" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Dental Implants & Fixed Teeth</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Permanent replacement for missing teeth with bio-compatible titanium implants for natural look and chewing confidence.</p>
+                    <div class="flex justify-between items-center text-xs pt-3 border-t border-slate-800">
+                        <span class="text-teal-400 font-semibold">Checkup Fee: Rs. 500</span>
+                        <a href="#booking" onclick="selectServiceInForm('Dental Implants')" class="text-slate-300 hover:text-teal-300 font-bold flex items-center gap-1">Book Now <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card glass-card p-6 rounded-2xl border border-slate-800 hover:border-teal-500/40 transition-all duration-300" data-category="cosmetic">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Teeth Whitening & Scaling</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Ultrasonic scaling & polishing to remove stains, plaque, and tartar, followed by professional instant teeth whitening.</p>
+                    <div class="flex justify-between items-center text-xs pt-3 border-t border-slate-800">
+                        <span class="text-teal-400 font-semibold">Checkup Fee: Rs. 500</span>
+                        <a href="#booking" onclick="selectServiceInForm('Teeth Whitening & Scaling')" class="text-slate-300 hover:text-teal-300 font-bold flex items-center gap-1">Book Now <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card glass-card p-6 rounded-2xl border border-slate-800 hover:border-teal-500/40 transition-all duration-300" data-category="restorative">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-4">
+                        <i data-lucide="scan" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Digital Dental X-Rays</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">High-precision digital radiographic imaging with low radiation for instant, ultra-clear diagnostic evaluations.</p>
+                    <div class="flex justify-between items-center text-xs pt-3 border-t border-slate-800">
+                        <span class="text-teal-400 font-semibold">Checkup Fee: Rs. 500</span>
+                        <a href="#booking" onclick="selectServiceInForm('Digital Dental X-Ray')" class="text-slate-300 hover:text-teal-300 font-bold flex items-center gap-1">Book Now <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card glass-card p-6 rounded-2xl border border-slate-800 hover:border-teal-500/40 transition-all duration-300" data-category="cosmetic">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-4">
+                        <i data-lucide="crown" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Crowns, Bridges & Veneers</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Premium ceramic and Zirconia dental crowns, bridges, and aesthetic veneers to restore damaged or broken teeth.</p>
+                    <div class="flex justify-between items-center text-xs pt-3 border-t border-slate-800">
+                        <span class="text-teal-400 font-semibold">Checkup Fee: Rs. 500</span>
+                        <a href="#booking" onclick="selectServiceInForm('Crowns & Bridges')" class="text-slate-300 hover:text-teal-300 font-bold flex items-center gap-1">Book Now <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card glass-card p-6 rounded-2xl border border-slate-800 hover:border-teal-500/40 transition-all duration-300" data-category="surgery">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mb-4">
+                        <i data-lucide="smile" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Tooth Extractions & Surgery</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Gentle extractions including painless wisdom tooth surgical removals under sterile clinical conditions.</p>
+                    <div class="flex justify-between items-center text-xs pt-3 border-t border-slate-800">
+                        <span class="text-teal-400 font-semibold">Checkup Fee: Rs. 500</span>
+                        <a href="#booking" onclick="selectServiceInForm('Tooth Extractions')" class="text-slate-300 hover:text-teal-300 font-bold flex items-center gap-1">Book Now <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Booking Engine & Slip Generator Section -->
+    <section id="booking" class="py-16 bg-slate-900/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Details Box -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Fast & Easy Consultation</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Book Your Dental Visit</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Reserve your slot in advance to avoid long wait times. You will receive an instant digital ticket / printable token receipt upon booking.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 glass-card p-4 rounded-xl">
+                            <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Fixed Checkup Fee</h4>
+                                <p class="text-slate-400 text-xs">Standard Consultation Fee is PKR 500 across all general appointments.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 glass-card p-4 rounded-xl">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Direct Phone Booking</h4>
+                                <p class="text-slate-400 text-xs">Prefer booking on phone? Call us directly at <a href="tel:03463298428" class="text-teal-300 font-bold hover:underline">03463298428</a>.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 glass-card p-4 rounded-xl">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="printer" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Thermal Slip Ready</h4>
+                                <p class="text-slate-400 text-xs">Instantly print or download an 80mm thermal receipt token for your appointment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Form Box -->
+                <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-2xl">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-6 h-6 text-teal-400"></i>
+                        Appointment Booking Form
+                    </h3>
+
+                    <form id="appointment-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Patient Full Name *</label>
+                                <input type="text" id="patient-name" required placeholder="e.g. Muhammad Ali" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Phone Number *</label>
+                                <input type="tel" id="patient-phone" required placeholder="03XXXXXXXXX" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Selected Doctor</label>
+                                <select id="doctor-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500 transition-colors">
+                                    <option value="Dr. Amir Warsi (20+ Yrs Exp)">Dr. Amir Warsi (Senior Dentist)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Required Dental Service</label>
+                                <select id="service-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500 transition-colors">
+                                    <option value="General Consultation & Checkup">General Consultation & Checkup</option>
+                                    <option value="Painless Root Canal (RCT)">Painless Root Canal (RCT)</option>
+                                    <option value="Dental Implants">Dental Implants</option>
+                                    <option value="Teeth Whitening & Scaling">Teeth Whitening & Scaling</option>
+                                    <option value="Digital Dental X-Ray">Digital Dental X-Ray</option>
+                                    <option value="Crowns & Bridges">Crowns & Bridges</option>
+                                    <option value="Tooth Extractions">Tooth Extractions</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Preferred Date *</label>
+                                <input type="date" id="appointment-date" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Preferred Time Slot *</label>
+                                <select id="appointment-time" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500 transition-colors">
+                                    <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                                    <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
+                                    <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
+                                    <option value="08:00 PM - 09:00 PM">08:00 PM - 09:00 PM</option>
+                                    <option value="09:00 PM - 10:00 PM">09:00 PM - 10:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Checkup Fee Summary Bar -->
+                        <div class="bg-slate-900/90 border border-teal-500/30 p-3.5 rounded-xl flex items-center justify-between text-xs sm:text-sm">
+                            <span class="text-slate-300">Consultation Checkup Fee:</span>
+                            <span class="text-teal-400 font-extrabold text-base">PKR 500</span>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 font-bold hover:from-teal-400 hover:to-cyan-400 shadow-xl shadow-teal-500/20 transition-all flex items-center justify-center gap-2 text-base">
+                            <i data-lucide="file-check" class="w-5 h-5"></i>
+                            Confirm Appointment & Generate Receipt
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Slip / Receipt Direct Utility Section -->
+    <section id="receipt-section" class="py-12 bg-slate-950 border-t border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-2xl mx-auto space-y-3">
+                <span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Reception & Clinic Tool</span>
+                <h3 class="text-2xl font-bold text-white">Already Booked? Print Your Token Ticket</h3>
+                <p class="text-slate-400 text-xs sm:text-sm">Clinic staff or walk-in patients can generate a thermal print receipt slip instantly anytime.</p>
+                <button onclick="openThermalModalWithDummy()" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 text-sm font-semibold transition-all">
+                    <i data-lucide="printer" class="w-4 h-4"></i> Preview Sample Thermal Slip
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="location" class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Visit Our Clinic</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Location & Contact Details</h2>
+                <p class="text-slate-400 text-sm mt-2">Conveniently located in Shah Faisal Town, Karachi.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Contact Details Card -->
+                <div class="lg:col-span-5 glass-card p-6 sm:p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center shrink-0 border border-teal-500/20">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Clinic Address</h4>
+                                <p class="text-slate-300 text-sm mt-1">Warsi Dental Clinic, Shah Faisal Town, Karachi, Sindh, Pakistan.</p>
+                                <a href="https://maps.app.goo.gl/ewcjZ1vgnjava2md6" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-400 hover:text-teal-300 mt-2">
+                                    Open in Google Maps <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 border border-cyan-500/20">
+                                <i data-lucide="phone-call" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Phone & Helpline</h4>
+                                <p class="text-slate-300 text-sm mt-1">03463298428</p>
+                                <p class="text-slate-500 text-xs">Direct call or SMS for appointments</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/20">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Admin Control Email</h4>
+                                <p class="text-slate-300 text-sm mt-1">sabeerkhann848@gmail.com</p>
+                                <p class="text-slate-500 text-xs">Clinic administration & inquiries</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Clinic Timings</h4>
+                                <p class="text-slate-300 text-sm mt-1">Monday – Saturday: 5:00 PM – 10:00 PM</p>
+                                <p class="text-amber-400 text-xs mt-0.5">Sunday: Emergency / Prior Appointment</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-800 mt-6">
+                        <a href="https://wa.me/923463298428?text=Assalam%20o%20Alaikum,%20I%20want%20to%20know%20about%20clinic%20timings%20and%20doctor%20availability." target="_blank" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all text-center flex items-center justify-center gap-2 text-sm shadow-lg shadow-emerald-600/20">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            WhatsApp Direct Consultation
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Map Container -->
+                <div class="lg:col-span-7 glass-card p-2 rounded-2xl border border-slate-800 min-h-[350px] relative overflow-hidden flex flex-col justify-between">
+                    <div class="w-full h-full min-h-[380px] rounded-xl overflow-hidden relative bg-slate-900">
+                        <iframe 
+                            class="w-full h-full min-h-[380px] border-0 filter grayscale opacity-90 hover:grayscale-0 transition-all duration-500" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14476.10828230553!2d67.1400!3d24.8800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTSw3kk2GCyUUsGnvR2ZHSNoEaWkhfkGE1J!5e0!3m2!1sen!2spk!4v1680000000000!5m2!1sen!2spk" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="p-3 bg-slate-900/90 text-center flex justify-between items-center text-xs">
+                        <span class="text-slate-400">Shah Faisal Town, Karachi</span>
+                        <a href="https://maps.app.goo.gl/ewcjZ1vgnjava2md6" target="_blank" class="text-teal-400 font-bold hover:underline flex items-center gap-1">
+                            Open Map Link <i data-lucide="external-link" class="w-3 h-3"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Reviews & FAQs -->
+    <section id="faqs" class="py-16 bg-slate-900/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <!-- Testimonials Left -->
+                <div>
+                    <span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Patient Trust</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-1 mb-6">Local Reviews</h2>
+
+                    <div class="space-y-4">
+                        <div class="glass-card p-5 rounded-2xl border border-slate-800">
+                            <div class="flex items-center gap-1 text-amber-400 mb-2">
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            </div>
+                            <p class="text-slate-300 text-xs sm:text-sm italic leading-relaxed">
+                                "Dr. Amir Warsi completed my root canal completely painlessly! Very clean clinic in Shah Faisal with reasonable fees (Rs. 500 checkup). Highly recommended!"
+                            </p>
+                            <div class="mt-3 text-xs">
+                                <span class="font-bold text-white block">Tariq Mahmood</span>
+                                <span class="text-slate-500">Shah Faisal Resident</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-2xl border border-slate-800">
+                            <div class="flex items-center gap-1 text-amber-400 mb-2">
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            </div>
+                            <p class="text-slate-300 text-xs sm:text-sm italic leading-relaxed">
+                                "Got my digital dental X-ray and scaling done here. Very modern digital setup and smooth ticket booking system."
+                            </p>
+                            <div class="mt-3 text-xs">
+                                <span class="font-bold text-white block">Saima Ahmed</span>
+                                <span class="text-slate-500">Karachi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQs Right -->
+                <div>
+                    <span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Got Questions?</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-1 mb-6">Frequently Asked Questions</h2>
+
+                    <div class="space-y-3">
+                        <div class="glass-card rounded-xl border border-slate-800 overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full text-left p-4 text-sm font-bold text-white flex justify-between items-center hover:bg-slate-800/50">
+                                <span>What is the checkup / consultation fee?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-teal-400 transition-transform"></i>
+                            </button>
+                            <div class="faq-content hidden p-4 pt-0 text-xs text-slate-300 border-t border-slate-800/50">
+                                The consultation checkup fee at Warsi Dental Clinic is fixed at <strong>PKR 500</strong>.
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-xl border border-slate-800 overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full text-left p-4 text-sm font-bold text-white flex justify-between items-center hover:bg-slate-800/50">
+                                <span>Who is the lead doctor at Warsi Dental Clinic?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-teal-400 transition-transform"></i>
+                            </button>
+                            <div class="faq-content hidden p-4 pt-0 text-xs text-slate-300 border-t border-slate-800/50">
+                                Treatments are led by senior dental surgeon <strong>Dr. Amir Warsi</strong>, who brings over 20+ years of surgical and clinical dental expertise.
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-xl border border-slate-800 overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full text-left p-4 text-sm font-bold text-white flex justify-between items-center hover:bg-slate-800/50">
+                                <span>Do I need an advance appointment?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-teal-400 transition-transform"></i>
+                            </button>
+                            <div class="faq-content hidden p-4 pt-0 text-xs text-slate-300 border-t border-slate-800/50">
+                                While walk-ins are welcome, booking online or calling <strong>03463298428</strong> ensures minimal waiting time.
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-xl border border-slate-800 overflow-hidden">
+                            <button onclick="toggleFaq(this)" class="w-full text-left p-4 text-sm font-bold text-white flex justify-between items-center hover:bg-slate-800/50">
+                                <span>Are treatments painless?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-teal-400 transition-transform"></i>
+                            </button>
+                            <div class="faq-content hidden p-4 pt-0 text-xs text-slate-300 border-t border-slate-800/50">
+                                Yes, we utilize modern local anesthetics, gentle techniques, and rotary digital technology to make procedure like RCTs as comfortable as possible.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-10 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold">
+                        <i data-lucide="tooth" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <span class="text-white font-bold text-sm block">WARSI DENTAL CLINIC</span>
+                        <span class="text-slate-500 text-[10px]">Shah Faisal Town, Karachi</span>
+                    </div>
+                </div>
+
+                <div class="text-center md:text-right space-y-1">
+                    <p>© 2026 Warsi Dental Clinic. All rights reserved.</p>
+                    <p class="text-slate-500">Contact: 03463298428 | Admin: sabeerkhann848@gmail.com</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRINTABLE THERMAL RECEIPT MODAL -->
+    <div id="receipt-modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-6 shadow-2xl relative overflow-y-auto max-h-[90vh]">
+            
+            <button onclick="closeReceiptModal()" class="no-print absolute top-4 right-4 text-slate-400 hover:text-white p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- THERMAL SLIP CONTAINER (80mm width printable) -->
+            <div id="thermal-receipt-modal" class="bg-white text-slate-950 p-4 rounded-lg font-mono text-xs shadow-inner">
+                
+                <div class="text-center border-b border-dashed border-slate-400 pb-3 mb-3">
+                    <h3 class="font-extrabold text-base tracking-wider uppercase">WARSI DENTAL CLINIC</h3>
+                    <p class="text-[10px] text-slate-700">Shah Faisal Town, Karachi</p>
+                    <p class="text-[10px] text-slate-700">Phone: 03463298428</p>
+                    <p class="text-[9px] text-slate-500">Dr. Amir Warsi (20+ Yrs Exp)</p>
+                </div>
+
+                <div class="bg-slate-100 p-2 text-center rounded mb-3 border border-slate-300">
+                    <span class="text-[10px] uppercase font-bold block text-slate-600">APPOINTMENT TOKEN NO</span>
+                    <span id="receipt-token" class="text-2xl font-black text-slate-900">#WDC-084</span>
+                </div>
+
+                <div class="space-y-1.5 border-b border-dashed border-slate-400 pb-3 mb-3 text-[11px]">
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Patient Name:</span>
+                        <span id="receipt-patient" class="font-bold">Muhammad Ali</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Phone No:</span>
+                        <span id="receipt-phone">03463298428</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Service:</span>
+                        <span id="receipt-service" class="font-bold">Root Canal Treatment</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Doctor:</span>
+                        <span id="receipt-doctor">Dr. Amir Warsi</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Date:</span>
+                        <span id="receipt-date">2026-10-26</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Time Slot:</span>
+                        <span id="receipt-time">07:00 PM - 08:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center font-bold text-xs py-1 border-b border-dashed border-slate-400 mb-3">
+                    <span>CHECKUP CONSULTATION FEE:</span>
+                    <span class="text-sm">PKR 500</span>
+                </div>
+
+                <div class="text-center text-[9px] text-slate-500 space-y-1">
+                    <p>Please arrive 10 minutes prior to slot.</p>
+                    <p>Thank you for choosing Warsi Dental Clinic!</p>
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons (No Print) -->
+            <div class="no-print mt-5 flex gap-3">
+                <button onclick="window.print()" class="flex-1 py-2.5 rounded-xl bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 flex items-center justify-center gap-1.5 text-xs">
+                    <i data-lucide="printer" class="w-4 h-4"></i> Print Thermal Slip
+                </button>
+                <button onclick="closeReceiptModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 text-xs">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Default Date Setting to Tomorrow
+        window.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('appointment-date');
+            if (dateInput) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.value = tomorrow.toISOString().split('T')[0];
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Service Filter Logic
+        function filterServices(category) {
+            const buttons = document.querySelectorAll('#service-filters button');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-teal-500', 'text-slate-950', 'active');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            event.target.classList.remove('bg-slate-800', 'text-slate-300');
+            event.target.classList.add('bg-teal-500', 'text-slate-950', 'active');
+
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Select Service from Card directly into Form
+        function selectServiceInForm(serviceName) {
+            const select = document.getElementById('service-select');
+            if (select) {
+                select.value = serviceName;
+            }
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            content.classList.toggle('hidden');
+            if (icon) {
+                icon.classList.toggle('rotate-180');
+            }
+        }
+
+        // Form Submission & Thermal Receipt Generation
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('patient-name').value;
+            const phone = document.getElementById('patient-phone').value;
+            const doctor = document.getElementById('doctor-select').value;
+            const service = document.getElementById('service-select').value;
+            const date = document.getElementById('appointment-date').value;
+            const time = document.getElementById('appointment-time').value;
+
+            // Generate Random Token Number
+            const tokenNum = '#WDC-' + Math.floor(100 + Math.random() * 900);
+
+            // Populate Thermal Slip Modal
+            document.getElementById('receipt-patient').innerText = name;
+            document.getElementById('receipt-phone').innerText = phone;
+            document.getElementById('receipt-doctor').innerText = doctor;
+            document.getElementById('receipt-service').innerText = service;
+            document.getElementById('receipt-date').innerText = date;
+            document.getElementById('receipt-time').innerText = time;
+            document.getElementById('receipt-token').innerText = tokenNum;
+
+            // Open Receipt Modal
+            document.getElementById('receipt-modal-backdrop').classList.remove('hidden');
+        }
+
+        // Open Modal with Sample Data
+        function openThermalModalWithDummy() {
+            document.getElementById('receipt-patient').innerText = "Sample Patient";
+            document.getElementById('receipt-phone').innerText = "03463298428";
+            document.getElementById('receipt-doctor').innerText = "Dr. Amir Warsi";
+            document.getElementById('receipt-service').innerText = "General Consultation";
+            document.getElementById('receipt-date').innerText = new Date().toISOString().split('T')[0];
+            document.getElementById('receipt-time').innerText = "06:00 PM - 07:00 PM";
+            document.getElementById('receipt-token').innerText = "#WDC-101";
+
+            document.getElementById('receipt-modal-backdrop').classList.remove('hidden');
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('receipt-modal-backdrop').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
